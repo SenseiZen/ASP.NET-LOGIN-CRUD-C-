@@ -1,0 +1,56 @@
+@inherits System.Web.Mvc.WebViewPage
+@{
+    Layout = null;
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        a {
+            background-color: red;
+            box-shadow: 0 5px 0 darkred;
+            color: white;
+            padding: 1em 1.5em;
+            position: relative;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        a:hover {
+            background-color: #ce0606;
+            cursor: pointer;
+        }
+
+        a:active {
+            box-shadow: none;
+            top: 5px;
+        }
+        #dashboard-div {
+            position: absolute;
+            left: 40%;
+            top: 20%;
+            padding: 10px 10px;
+            font-size: 150%;
+        }
+    </style>
+</head>
+<body>
+    <div id="dashboard-div">
+        <h1>Dashboard</h1>
+        <h3>Username: @Session["userName"].ToString()</h3>
+        <a href="@Url.Action("LogOut", "Login")">Logout</a>
+        <br />
+        <br />
+        <br />
+        <br />
+        <a href="@Url.Action("RedirectToAspx", "Forms")">Join</a>
+    </div>
+</body>
+</html>
